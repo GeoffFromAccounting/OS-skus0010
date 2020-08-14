@@ -37,3 +37,19 @@ void main() {
     }
   }
 }
+
+// select SYSCALL segment to hold SYSCALL/trap entry point table
+#pragma data_seg(Syscall)
+
+struct Syscall {
+  char xjmp;
+  void()* syscall;
+  char xnop;
+}
+
+const char JMP = 0x4c;
+const char NOP = 0xea;
+
+export align (0x100) struct Syscall[] SYSCALL_RESET = {
+  { JMP, &main, NOP }
+};

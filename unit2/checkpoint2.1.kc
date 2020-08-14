@@ -1,0 +1,39 @@
+import "string"
+#pragma link("mega65hyper.ld")
+
+
+// special addresses and values used
+const char* RASTER = 0xd012;
+const char* VIC_MEMORY = 0xd010;
+const char* SCREEN = 0x0400;
+const char* BGCOL = 0xd021;
+const char* COLS = 0xd800;
+const char BLACK = 0;
+const char WHITE = 1;
+
+// display text
+char[] MESSAGE = "hello world!";
+
+void main() {
+  // init screen memory
+  *VIC_MEMORY = 0x14;
+  // fill screen with white space
+  memset(SCREEN, ' ', 40*25);
+  // set colour to every character as white
+  memset(COLS, WHITE, 40*25);
+  // print MESSAGE
+  char* sc = SCREEN+40; // Display one line down
+  char* msg = MESSAGE; // message to display
+  // copy string
+  while(*msg) {
+    *sc++ = *msg++;
+  }
+  // loop forever while displaying two white bars
+  while (true) {
+    if (*RASTER==54 || RASTER==66) {
+      *BGCOL = WHITE;
+    } else {
+      *BGCOL = BLACK;
+    }
+  }
+}

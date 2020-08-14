@@ -39,7 +39,7 @@ void main() {
 }
 
 // sameple SYSCALL handlers
-void syscall() {
+void syscall1() {
   *(SCREEN+79) = '}';
 }
 
@@ -54,10 +54,15 @@ struct Syscall {
   char xjmp;
   void()* syscall;
   char xnop;
-}
+};
 
 const char JMP = 0x4c;
 const char NOP = 0xea;
+
+export struct Syscall[] SYSCALLS = {
+  { JMP, &syscall1, NOP },
+  { JMP, &syscall2, NOP }
+};
 
 export align (0x100) struct Syscall[] SYSCALL_RESET = {
   { JMP, &main, NOP }

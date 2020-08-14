@@ -38,6 +38,15 @@ void main() {
   }
 }
 
+// sameple SYSCALL handlers
+void syscall() {
+  *(SCREEN+79) = '}';
+}
+
+void syscall2() {
+  *(SCREEN+78) = '{';
+}
+
 // select SYSCALL segment to hold SYSCALL/trap entry point table
 #pragma data_seg(Syscall)
 

@@ -309,6 +309,30 @@ void securexit() {
   exit_hypervisor();
 }
 
+void restorkey() {
+  exit_hypervisor();
+}
+
+void alttabkey() {
+  exit_hypervisor();
+}
+
+void VF011RD() {
+  exit_hypervisor();
+}
+
+void VF011WR() {
+  exit_hypervisor();
+}
+
+void reserved() {
+  exit_hypervisor();
+}
+
+void cpukil() {
+  exit_hypervisor();
+}
+
 // select SYSCALL segment to hold SYSCALL/trap entry point table
 #pragma data_seg(Syscall)
 

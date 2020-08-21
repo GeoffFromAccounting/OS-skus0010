@@ -40,9 +40,9 @@ void reset() {
   }
 }
 
-void exit_hypervisor()
-{
+void exit_hypervisor() {
   *(unsigned char *)$D67F = $01;
+}
 
 // sameple SYSCALL handlers
 void syscall1() {
@@ -411,15 +411,15 @@ export struct SysCall[] SYSCALLS = {
   { JMP, &syscall63, NOP },
   { JMP, &syscall64, NOP },
   { JMP, &securentr, NOP },
-  { JMP, &securexit, NOP },
+  { JMP, &securexit, NOP }
+};
+
+export struct SysCall[] SYSCALL_RESET = {
+  { JMP, &reset, NOP },
   { JMP, &restorkey, NOP },
   { JMP, &alttabkey, NOP },
   { JMP, &VF011RD, NOP },
   { JMP, &VF011WR, NOP },
   { JMP, &reserved, NOP },
-  { JMP, &cpukil, NOP },
-};
-
-export align(0x100) struct SysCall[] SYSCALL_RESET = {
-  { JMP, &reset, NOP }
+  { JMP, &cpukil, NOP }
 };

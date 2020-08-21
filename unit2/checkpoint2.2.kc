@@ -14,7 +14,9 @@ const char WHITE = 1;
 // display text
 char[] MESSAGE = "checkpoint 2.2";
 
-void main() {
+void main() {}
+
+void reset() {
   // init screen memory
   *VIC_MEMORY = 0x14;
   // fill screen with white space
@@ -38,7 +40,7 @@ void main() {
   }
 }
 
-void exit_hypercisor()
+void exit_hypervisor()
 {
   *(unsigned char *)$D67F = $01;
 
@@ -299,6 +301,14 @@ void syscall64() {
   exit_hypervisor();
 }
 
+void securentr() {
+  exit_hypervisor();
+}
+
+void securexit() {
+  exit_hypervisor();
+}
+
 // select SYSCALL segment to hold SYSCALL/trap entry point table
 #pragma data_seg(Syscall)
 
@@ -376,8 +386,16 @@ export struct SysCall[] SYSCALLS = {
   { JMP, &syscall62, NOP },
   { JMP, &syscall63, NOP },
   { JMP, &syscall64, NOP },
+  { JMP, &securentr, NOP },
+  { JMP, &securexit, NOP },
+  { JMP, &restorkey, NOP },
+  { JMP, &alttabkey, NOP },
+  { JMP, &VF011RD, NOP },
+  { JMP, &VF011WR, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &cpukil, NOP },
 };
 
 export align(0x100) struct SysCall[] SYSCALL_RESET = {
-  { JMP, &main, NOP }
+  { JMP, &reset, NOP }
 };

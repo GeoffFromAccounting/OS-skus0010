@@ -20,10 +20,9 @@ unsigned char current_screen_x = 0;
 
 void print_to_screen(char *message) {
   char* sc = SCREEN+40; // Display one line down
-  char* msg = *message; // message to display
   // copy string
-  while(*msg) {
-    *sc++ = *msg++;
+  while(*message) {
+    *sc++ = *message++;
   }
 }
 

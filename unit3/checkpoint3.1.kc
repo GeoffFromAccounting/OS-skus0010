@@ -21,7 +21,7 @@ unsigned char current_screen_x = 0;
 
 void print_to_screen(char *message) {
   while (*message) {
-    SCREEN++ = *message++;
+    current_screen_x++ = *message++;
   }
 }
 
@@ -35,7 +35,7 @@ void reset() {
   // print MESSAGE
   // char* sc = SCREEN+40; // Display one line down
   // char* msg = MESSAGE; // message to display
-  print_to_screen(test);
+  print_to_screen("test");
 }
 
 void exit_hypervisor() {

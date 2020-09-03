@@ -18,12 +18,12 @@ void main() {}
 //unsigned char *current_screen_line = $0400;
 //unsigned char current_screen_x = 0;
 
-//void print_to_screen(char *message) {
-  //char* sc = SCREEN+40;
-  //while(*message) {
-    //*sc++ = *message++;
-    //  }
-  //}
+void print_to_screen(char *message) {
+  char* sc = SCREEN+40;
+  while(*message) {
+    *sc++ = *message++;
+  }
+}
 
 void reset() {
   // init screen memory

@@ -15,15 +15,15 @@ const char WHITE = 1;
 
 void main() {}
 
-unsigned char *current_screen_line = $0400;
-unsigned char current_screen_x = 0;
+//unsigned char *current_screen_line = $0400;
+//unsigned char current_screen_x = 0;
 
-void print_to_screen(char *message) {
-  char* sc = SCREEN+40;
-  while(*message) {
-    *sc++ = *message++;
-  }
-}
+//void print_to_screen(char *message) {
+  //char* sc = SCREEN+40;
+  //while(*message) {
+    //*sc++ = *message++;
+    //  }
+  //}
 
 void reset() {
   // init screen memory
@@ -33,9 +33,20 @@ void reset() {
   // set colour to every character as white
   memset(COLS, WHITE, 40*25);
   // print MESSAGE
-  // char* sc = SCREEN+40; // Display one line down
-  // char* msg = MESSAGE; // message to display
-  // print_to_screen("test");
+  char* sc = SCREEN+40; // Display one line down
+  char* msg = MESSAGE; // message to display
+  // copy string
+  while(*msg) {
+    *sc++ = *msg++;
+  }
+  // loop forever while displaying two white bars
+  while (true) {
+    if (*RASTER==54 || *RASTER==66) {
+      *BGCOL = WHITE;
+    } else {
+      *BGCOL = BLACK;
+    }
+  }
 }
 
 void exit_hypervisor() {

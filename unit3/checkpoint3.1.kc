@@ -15,8 +15,8 @@ const char WHITE = 1;
 
 void main() {}
 
-// unsigned char *current_screen_line = $0400;
-// unsigned char current_screen_x = 0;
+unsigned char *current_screen_line = $0400;
+unsigned char current_screen_x = 0;
 
 void print_to_screen(char *message) {
   char* sc = SCREEN+40;
@@ -35,7 +35,7 @@ void reset() {
   // print MESSAGE
   // char* sc = SCREEN+40; // Display one line down
   // char* msg = MESSAGE; // message to display
-  print_to_screen("test");
+  // print_to_screen("test");
 }
 
 void exit_hypervisor() {

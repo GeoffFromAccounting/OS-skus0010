@@ -17,9 +17,10 @@ unsigned char *current_screen_line = $0400;
 unsigned char current_screen_x = 0;
 
 void print_to_screen(char *message) {
-  unsigned char[] msg = *message;
-  while(msg) {
-    current_screen_x++ = msg++;
+  char[] msg = *message;
+  char *mg = msg;
+  while(*mg) {
+    current_screen_x++ = *mg++;
   }
 }
 

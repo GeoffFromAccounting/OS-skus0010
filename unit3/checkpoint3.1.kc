@@ -17,10 +17,8 @@ unsigned char *current_screen_line = $0400;
 unsigned char current_screen_x = 0;
 
 void print_to_screen(char *message) {
-  char[] msg = *message;
-  char *mg = msg;
-  while(*mg) {
-    current_screen_x++ = *mg++;
+	while(*message) {
+    current_screen_x++ = *message++;
   }
 }
 
@@ -405,6 +403,63 @@ export align(0x100) struct SysCall[] SYSCALL_RESET = {
   { JMP, &alttabkey, NOP },
   { JMP, &VF011RD, NOP },
   { JMP, &VF011WR, NOP },
+	{ JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
+  { JMP, &reserved, NOP },
   { JMP, &reserved, NOP },
   { JMP, &cpukil, NOP }
 };

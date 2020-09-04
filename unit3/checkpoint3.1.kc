@@ -294,6 +294,7 @@ void syscall64() {
   exit_hypervisor();
 }
 
+// traps
 void restorkey() {
   exit_hypervisor();
 }

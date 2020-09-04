@@ -13,12 +13,16 @@ const char WHITE = 1;
 
 void main() {}
 
+char[] MESSAGE = "test";
 unsigned char *current_screen_line = $0400;
 unsigned char current_screen_x = 0;
 
-void print_to_screen(char *message) {
-	while(*message) {
-    current_screen_x++ = *message++;
+void print_to_screen(char* message) {
+	char* sc = SCREEN+40; // Display one line down
+  char* msg = MESSAGE; // message to display
+  // copy string
+  while(*msg) {
+    *sc++ = *msg++;
   }
 }
 
@@ -30,7 +34,8 @@ void reset() {
   // set colour to every character as white
   memset(COLS, WHITE, 40*25);
   // print MESSAGE
-  print_to_screen("hi");
+  print_to_screen("test2");
+  while(true){}
 }
 
 void exit_hypervisor() {

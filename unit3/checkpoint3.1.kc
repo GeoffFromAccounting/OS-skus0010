@@ -18,11 +18,15 @@ unsigned char* current_screen_line = $0400;
 unsigned char current_screen_x = 0;
 
 void print_to_screen(char* message) {
-	char* sc = SCREEN+40; // Display one line down
-  // copy string
+	// current_screen_x = *current_screen_line;
   while(*message) {
-    *current_screen_line++ = *message++;
+  	*current_screen_line++ = *message++;
   }
+}
+
+void print_newline() {
+	current_screen_x = 0;
+	current_screen_line = $0400 + 40;
 }
 
 void reset() {
@@ -33,8 +37,10 @@ void reset() {
   // set colour to every character as white
   memset(COLS, WHITE, 40*25);
   // print MESSAGE
-  print_to_screen("test2");
-  while(true){}
+  print_to_screen("skus0010 operating system starting...");
+  print_newline();
+	print_to_screen("testing hardware");
+  exit_hypervisor();
 }
 
 void exit_hypervisor() {
